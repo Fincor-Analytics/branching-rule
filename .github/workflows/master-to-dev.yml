@@ -1,4 +1,4 @@
-name: Auto Sync Main to Dev
+name: Auto Sync Master to Dev
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  sync-main-to-dev:
+  sync-master-to-dev:
     runs-on: ubuntu-latest
 
     steps:
