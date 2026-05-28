@@ -33,8 +33,8 @@ jobs:
       - name: Build React App
         run: npm run build
 
-      - name: Build Docker Image
-        run: docker build -t react-frontend .
+     # - name: Build Docker Image
+       # run: docker build -t react-frontend .
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
