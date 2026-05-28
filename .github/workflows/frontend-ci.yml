@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: react-build-files
-          path: frontend/dist
+          path: dist
 
       - name: Verify Build Success
         run: echo "Frontend CI Pipeline Passed"
