@@ -33,14 +33,18 @@ jobs:
       - name: Build React App
         run: npm run build
 
-     # - name: Build Docker Image
-       # run: docker build -t react-frontend .
+      - name: Create Artifact Folder
+        run: mkdir -p ../artifacts/frontend-build
 
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: react-build-files
-          path: dist
+      - name: Copy Build Files
+        run: cp -r dist/* ../artifacts/frontend-build/
 
+      - name: Commit Build Artifacts
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add ../artifacts/frontend-build
+          git commit -m "Updated frontend build artifacts" || echo "No changes to commit"
+          git push
       - name: Verify Build Success
         run: echo "Frontend CI Pipeline Passed"
