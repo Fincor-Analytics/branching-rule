@@ -1,4 +1,3 @@
-```yaml id="o0c89d"
 name: Frontend CI/CD
 
 permissions:
@@ -56,4 +55,3 @@ jobs:
 
       - name: Verify Build Success
         run: echo "Frontend CI Pipeline Passed"
-```
