@@ -1,7 +1,7 @@
 name: Frontend CI/CD
 
 permissions:
-  contents: write
+  contents: read
 
 on:
   push:
@@ -36,22 +36,11 @@ jobs:
       - name: Build React App
         run: npm run build
 
-      - name: Create Artifact Directory
-        run: mkdir -p ../artifacts/dist
-
-      - name: Copy Build Files
-        run: cp -r dist/* ../artifacts/dist/
-
-      - name: Commit Artifacts
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-
-          git add ../artifacts/dist
-
-          git commit -m "Updated frontend build artifacts" || echo "No changes to commit"
-
-          git push
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: react-build
+          path: frontend/dist
 
       - name: Verify Build Success
         run: echo "Frontend CI Pipeline Passed"

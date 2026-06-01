@@ -25,6 +25,6 @@ jobs:
 
           git checkout dev
 
-          git reset --hard origin/main
-
-          git push origin dev --force
+          git checkout dev
+          git merge origin/main --no-edit
+          git push origin dev
